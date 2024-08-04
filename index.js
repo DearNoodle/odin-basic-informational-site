@@ -1,9 +1,10 @@
-import http from 'http';
+import express from 'express';
 import fs from 'fs';
 
+const app = express();
 const PORT = 8080;
 
-const server = http.createServer((req, res) => {
+app.get('*', (req, res) => {
   let fileName;
   if (req.url === '/') {
     fileName = './index' + '.html';
@@ -24,4 +25,4 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT);
+app.listen(PORT);
